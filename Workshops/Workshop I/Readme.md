@@ -115,4 +115,4 @@
 
 ¡Y eso es todo! Ahora has configurado y trabajado con una máquina virtual Debian usando Vagrant.
 
-[My GitHub](https://github.com/FierceSpectrum/Software-Libre)
+[My GitHub](https://github.com/FierceSpectrum/Software-Libre/tree/main/Workshops/Workshop%20I)
