@@ -181,13 +181,11 @@ Esto confirmará que el servidor Apache está funcionando correctamente y te mos
     ```sh
     sudo mkdir -p /opt/composer
     sudo mv composer.phar /opt/composer/
-    sudo ln -s /opt/composer/composer.phar /usr/local/bin
     ```
 4. Creamos una acceso directo para el archivo composer.phar.
     ```sh
     ls -la /usr/local/bin/c*
     sudo ln -s /opt/composer/composer.phar /usr/local/bin/composer
-    sudo rm /usr/local/bin/composer.phar
     ```
 5. Instalamos NVM (Node Version Manager) para gestionar versiones de Node.js.
     * Instalamos curl
@@ -253,9 +251,9 @@ Esto confirmará que el servidor Apache está funcionando correctamente y te mos
 3. Activamos el sitio y recargamos Apache.
     ```sh
     sudo cp lfts.isw811.xyz.conf /etc/apache2/sites-avaliable/
-    sudo apache2ctl -t
+    sudo apachectl -t
     sudo a2ensite lfts.isw811.xyz.conf
-    sudo apache2ctl -t
+    sudo apachectl -t
     sudo systemctl reload apache2
     ```
 
@@ -273,11 +271,39 @@ Esto confirmará que el servidor Apache está funcionando correctamente y te mos
         DB_USERNAME=laravel
         DB_PASSWORD=secret
         ```
-5. Ejecutamos las migraciones de Laravel para crear las tablas en la base de datos.
+5. **Ejemplo del archivo .env**
+
+    ![Estructura de carpetas VagrantFile](./Imagenes/laravelDB.png)
+
+6. Ejecutamos las migraciones de Laravel para crear las tablas en la base de datos.
     ```sh
     composer --global config process-timeout 2000
     php artisan migrate
     ```
+### 8. Revisamos si se crearon las tablas correctamente.
+1. Nos conectamos desde la maquina Webserver a la base de datos.
+    ```sh
+    sudo -h 192.168.56.11 -laravel -p
+    secret
+    ```
+
+   * En MySQL
+        ```SQL
+        show databases;
+        use lfts;
+        show tables;
+        ```
+2. **Ejemplo del las tablas**
+    
+    ![Tablas en la base de datos](./Imagenes/Tablas.png)
+
+### 9. Ver nuestro trabajo.
+1. Podemos ver la pagina de laravel llendo a la ruta [lfts.isw811.xyz](http://lfts.isw811.xyz)
+
+2. **Ejemplo del la pagina con Laravel**
+    ![Pagina web con laravel](./Imagenes/Pagina.png)
+
+
 ¡Listo! Ahora tienes una máquina Debian configurada como servidor de base de datos conectada con el WebServer usando Laravel. Asegúrate de probar tu sitio web en un navegador para verificar que todo funcione correctamente.
 
 [My GitHub](https://github.com/FierceSpectrum/Software-Libre/tree/main/Workshops/Workshop%20III)
