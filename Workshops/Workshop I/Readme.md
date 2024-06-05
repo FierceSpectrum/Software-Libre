@@ -56,7 +56,7 @@
 
 2. Configura la red de la máquina virtual. Busca la sección de configuración de red y añade la siguiente línea:
     ```ruby
-    config.vm.network "private_network", ip: "192.168.56.1"
+    config.vm.network "private_network", ip: "192.168.56.10"
     ```
 
 3. **Ejemplo de configuración de red en Vagrantfile**:
@@ -87,12 +87,12 @@
 
 2. Instala algunos paquetes básicos. Por ejemplo:
     ```sh
-    sudo apt-get install -y git
+    sudo apt-get install -y apache2
     ```
 
 3. Verifica que los paquetes se han instalado correctamente:
     ```sh
-    git --version
+    apache2 --version
     ```
 
 4. **Ejemplo de instalación y verificación de paquetes**:
